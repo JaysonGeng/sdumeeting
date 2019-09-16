@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>医药卫生管理学院会议室预约系统</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous"></script>
+
+</head>
+<body style="overflow:hidden;">
+<img src="/images/bg_view.png" style="width: 100%;height: auto;  position: absolute;z-index: -1 ;top: 0;">
+<div class="container-fluid" style="text-align: center"><h1></h1>
+
+</div>
+
+
+<div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+
+    <div style="text-align: center;align-content: center;align-items: center;    margin-top: 20%;">
+        <div style="max-width: 60%; margin-left: 20%;position: relative;display: flex;">
+            <h5 style="background: #9c0c13;padding: 1rem;color: #fff; margin-bottom: 0;">327会议室</h5>
+            <div style="    margin-left: 58%;">
+                <a href="/view" class="btn btn-primary"
+                   style="border-radius: 25px;background: #9c0c13;color: #fff;margin-bottom: -20px;    padding: .3rem 1.5rem;">按日历查看</a>
+                <a href="http://202.194.15.92/academic?redirect=http://202.194.15.92:8688/login" class="btn btn-primary"
+                   style="border-radius: 25px;background: #9c0c13;color: #fff;margin-bottom: -20px;    padding: .3rem 1.5rem;">预约会议室</a>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div class="card mb-3" style="max-width: 60%; margin-left: 20%;">
+
+            <table class="table table-striped">
+                <thead>
+                <tr class="thead-light">
+                    <th scope="col" style="background: #9c0c13;color: #fff">预约时间</th>
+                    <th scope="col" style="background: #9c0c13;color: #fff">日程主题</th>
+                    <th scope="col" style="background: #9c0c13;color: #fff">预约人</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr th:each="event : ${events}">
+                    <th scope="row" th:text="${event.get('time')}">1</th>
+                    <td th:text="${event.get('title')}">耿继勋</td>
+                    <td th:text="${event.get('user')}">耿继勋</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <footer style="text-align: center;align-items: center;align-content: center;margin-top: 80px;z-index: 1">
+        <div style="text-align: center;align-items: center;align-content: center">
+            <b><p style="text-align: center;align-items: center;align-content: center">版权所有：山东大学医药卫生管理学院 联系电话：0531-88382693</p></b>
+        </div>
+    </footer>
+</div>
+
+
+</body>
+<script></script>
+</html>
