@@ -47,7 +47,12 @@ public class MainService {
             /*  45 */
             User user = this.mainMapper.getUserById(e.getUserId());
             /*  46 */
-            jsonObject.put("user", user.getName());
+            if (user==null){
+                jsonObject.put("user", "null");
+            }else {
+                jsonObject.put("user", user.getName());
+            }
+
             /*  47 */
             jsonObject.put("textColor", "white");
             /*  48 */
@@ -214,9 +219,3 @@ public class MainService {
         return mainMapper.userEdit(id,roleId);
     }
 }
-
-
-/* Location:              C:\Users\MichaelOD_WIN10\Desktop\fsdownload\sdu-meeting-0.0.9-SNAPSHOT.jar!\BOOT-INF\classes\com\jayson\service\MainService.class
- * Java compiler version: 8 (52.0)
- * JD-Core Version:       1.0.7
- */

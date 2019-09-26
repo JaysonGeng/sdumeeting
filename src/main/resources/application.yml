@@ -5,13 +5,13 @@
 #      suffix: .html.
 
 server:
-  port: 8687
+  port: 8787
 
 spring:
   datasource:
     username: meeting
     password: sdumeeting
-    url: jdbc:mysql://202.194.15.92:3306/crud?zeroDateTimeBehavior=convertToNull&useUnicode=true&characterEncoding=utf-8&useSSL=false&allowMultiQueries=true&serverTimezone=GMT%2B8&
+    url: jdbc:mysql://202.194.15.92:3306/crud2?zeroDateTimeBehavior=convertToNull&useUnicode=true&characterEncoding=utf-8&useSSL=false&allowMultiQueries=true&serverTimezone=GMT%2B8&
     driver-class-name: com.mysql.cj.jdbc.Driver
   thymeleaf:
     cache: false

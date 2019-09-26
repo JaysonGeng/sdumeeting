@@ -30,9 +30,3 @@ public interface MainMapper {
   @Update("UPDATE Users SET role_id = #{roleId} WHERE id = #{id}")
   int userEdit(@Param("id")int id ,@Param("roleId") int roleId);
 }
-
-
-/* Location:              C:\Users\MichaelOD_WIN10\Desktop\fsdownload\sdu-meeting-0.0.9-SNAPSHOT.jar!\BOOT-INF\classes\com\jayson\mapper\MainMapper.class
- * Java compiler version: 8 (52.0)
- * JD-Core Version:       1.0.7
- */

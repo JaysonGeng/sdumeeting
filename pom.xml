@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.jayson</groupId>
-    <artifactId>sdumeeting</artifactId>
+    <artifactId>sdumeeting2</artifactId>
     <version>0.0.2-SNAPSHOT</version>
-    <name>sdumeeting</name>
+    <name>sdumeeting2</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>

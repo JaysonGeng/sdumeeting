@@ -141,8 +141,3 @@ public class MainController {
 
 }
 
-
-/* Location:              C:\Users\MichaelOD_WIN10\Desktop\fsdownload\sdu-meeting-0.0.9-SNAPSHOT.jar!\BOOT-INF\classes\com\jayson\controller\MainController.class
- * Java compiler version: 8 (52.0)
- * JD-Core Version:       1.0.7
- */
