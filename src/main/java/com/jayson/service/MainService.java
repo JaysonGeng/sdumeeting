@@ -33,8 +33,9 @@ public class MainService {
         /*  38 */
         JSONArray jsonArrayEvents = new JSONArray();
         /*  39 */
-        for (Event e : events) {
+        for (int i = events.size() - 1; i >= 0; i--) {
             /*  40 */
+            Event e = events.get(i);
             JSONObject jsonObject = new JSONObject();
             /*  41 */
             String title = e.getName().substring(0, e.getName().length() - 26);
@@ -47,7 +48,12 @@ public class MainService {
             /*  45 */
             User user = this.mainMapper.getUserById(e.getUserId());
             /*  46 */
-            jsonObject.put("user", user.getName());
+            if (user == null) {
+                jsonObject.put("user", "null");
+            } else {
+                jsonObject.put("user", user.getName());
+            }
+
             /*  47 */
             jsonObject.put("textColor", "white");
             /*  48 */
@@ -210,13 +216,7 @@ public class MainService {
         return param;
     }
 
-    public int  userEdit(int id , int roleId){
-        return mainMapper.userEdit(id,roleId);
+    public int userEdit(int id, int roleId) {
+        return mainMapper.userEdit(id, roleId);
     }
 }
-
-
-/* Location:              C:\Users\MichaelOD_WIN10\Desktop\fsdownload\sdu-meeting-0.0.9-SNAPSHOT.jar!\BOOT-INF\classes\com\jayson\service\MainService.class
- * Java compiler version: 8 (52.0)
- * JD-Core Version:       1.0.7
- */
