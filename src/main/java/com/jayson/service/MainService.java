@@ -33,8 +33,9 @@ public class MainService {
         /*  38 */
         JSONArray jsonArrayEvents = new JSONArray();
         /*  39 */
-        for (Event e : events) {
+        for (int i = events.size() - 1; i >= 0; i--) {
             /*  40 */
+            Event e = events.get(i);
             JSONObject jsonObject = new JSONObject();
             /*  41 */
             String title = e.getName().substring(0, e.getName().length() - 26);
