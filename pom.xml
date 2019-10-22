@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.jayson</groupId>
     <artifactId>sdumeeting2</artifactId>
-    <version>0.0.2-SNAPSHOT</version>
+    <version>0.0.4-SNAPSHOT</version>
     <name>sdumeeting2</name>
     <description>Demo project for Spring Boot</description>
 
