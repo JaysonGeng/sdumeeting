@@ -1,5 +1,6 @@
 package com.jayson.service;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.jayson.entity.Event;
@@ -62,8 +63,17 @@ public class MainService {
                 jsonArrayEvents.add(jsonObject);
             }
         }
+        for (int i = 0; i < jsonArrayEvents.size(); i++) {
 
-
+            for (int j = i + 1; j < jsonArrayEvents.size(); j++) {
+                JSONObject bf = (JSONObject) jsonArrayEvents.get(i);
+                JSONObject af = (JSONObject) jsonArrayEvents.get(j);
+                if (bf.getString("time").compareTo(af.getString("time")) < 0) {
+                    jsonArrayEvents.set(j, bf);
+                    jsonArrayEvents.set(i, af);
+                }
+            }
+        }
 
         /*  55 */
         param.put("events", jsonArrayEvents);
