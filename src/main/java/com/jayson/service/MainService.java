@@ -1,5 +1,6 @@
 package com.jayson.service;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.jayson.entity.Event;
@@ -9,6 +10,7 @@ import com.jayson.mapper.MainMapper;
 import com.jayson.service.MainService;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +28,9 @@ public class MainService {
         /*  33 */
         JSONObject param = new JSONObject();
 
+        Date d = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String nowDays = sdf.format(d);
 
         /*  36 */
         List<Event> events = this.mainMapper.getAllEvents();
@@ -38,9 +43,20 @@ public class MainService {
             Event e = events.get(i);
             JSONObject jsonObject = new JSONObject();
             /*  41 */
-            String title = e.getName().substring(0, e.getName().length() - 26);
+//            String title = e.getName().substring(0, e.getName().length() - 26);
+            String title = e.getName();
             /*  42 */
-            String time = e.getName().substring(e.getName().length() - 26);
+
+            String startDate = (new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss")).format(e.getStartTime());
+
+            String endDate = (new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss")).format(e.getEndTime());
+            String time = startDate.substring(0,"yyyy-MM-dd".length())
+                    +" ("
+                    + startDate.substring(startDate.length()-"HH:mm:ss".length())
+                    +" - "
+                    +endDate.substring(endDate.length()-"HH:mm:ss".length())
+                    +")";
+
             /*  43 */
             jsonObject.put("title", title);
             /*  44 */
@@ -48,26 +64,36 @@ public class MainService {
             /*  45 */
             User user = this.mainMapper.getUserById(e.getUserId());
             /*  46 */
-            if (user==null){
+            if (user == null) {
                 jsonObject.put("user", "null");
-            }else {
+            } else {
                 jsonObject.put("user", user.getName());
             }
 
             /*  47 */
             jsonObject.put("textColor", "white");
             /*  48 */
-            if (e.getRoomId() == 1) {
+
+            String enentDay = time.substring(0, time.length() - " (14:00 - 16:30)".length());
+            if (e.getRoomId() == 1 && nowDays.compareTo(enentDay) <  1) {
                 /*  49 */
                 jsonArrayEvents.add(jsonObject);
             }
         }
+        for (int i = 0; i < jsonArrayEvents.size(); i++) {
 
-
-
+            for (int j = i + 1; j < jsonArrayEvents.size(); j++) {
+                JSONObject bf = (JSONObject) jsonArrayEvents.get(i);
+                JSONObject af = (JSONObject) jsonArrayEvents.get(j);
+                System.out.println("time_bf:" + bf.getString("time"));
+                if (bf.getString("time").compareTo(af.getString("time")) < 0) {
+                    jsonArrayEvents.set(j, bf);
+                    jsonArrayEvents.set(i, af);
+                }
+            }
+        }
         /*  55 */
         param.put("events", jsonArrayEvents);
-
         /*  57 */
         return param;
     }
@@ -216,7 +242,7 @@ public class MainService {
         return param;
     }
 
-    public int  userEdit(int id , int roleId){
-        return mainMapper.userEdit(id,roleId);
+    public int userEdit(int id, int roleId) {
+        return mainMapper.userEdit(id, roleId);
     }
 }
