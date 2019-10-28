@@ -20,42 +20,33 @@ public class MainController {
 
     @RequestMapping({"/"})
     public String index(Model model) {
-        /* 24 */
+
         JSONObject param = this.mainService.init();
 
-        /* 26 */
         JSONArray events = param.getJSONArray("events");
+        JSONArray events2 = param.getJSONArray("events2");
+        JSONArray events3 = param.getJSONArray("events3");
 
-        /* 28 */
-        System.out.println(events.toJSONString());
-
-        /* 30 */
         model.addAttribute("events", events);
+        model.addAttribute("events2", events2);
+        model.addAttribute("events3", events3);
 
-        /* 32 */
         return "index";
     }
 
     @RequestMapping({"/view"})
     public String view(Model model) {
-        /* 37 */
+
         JSONObject param = this.mainService.view();
 
-        /* 39 */
         JSONArray events = param.getJSONArray("events");
-        /* 40 */
+
         JSONArray rooms = param.getJSONArray("rooms");
 
-        /* 42 */
-        System.out.println(events.toJSONString());
-        /* 43 */
-        System.out.println(rooms.toJSONString());
-
-        /* 45 */
         model.addAttribute("events", events);
-        /* 46 */
+
         model.addAttribute("rooms", rooms);
-        /* 47 */
+
         return "view";
     }
 
@@ -70,9 +61,6 @@ public class MainController {
         JSONArray rooms = param.getJSONArray("rooms");
 
         /* 57 */
-        System.out.println(events.toJSONString());
-        /* 58 */
-        System.out.println(rooms.toJSONString());
 
         /* 60 */
         model.addAttribute("events", events);
@@ -92,9 +80,7 @@ public class MainController {
         /* 70 */
         JSONArray rooms = param.getJSONArray("rooms");
         /* 71 */
-        System.out.println(events.toJSONString());
-        /* 72 */
-        System.out.println(rooms.toJSONString());
+
         /* 73 */
         model.addAttribute("events", events);
         /* 74 */
@@ -115,10 +101,7 @@ public class MainController {
         /* 84 */
         JSONArray rooms = param.getJSONArray("rooms");
         /* 85 */
-        System.out.println(events.toJSONString());
-        /* 86 */
-        System.out.println(rooms.toJSONString());
-        /* 87 */
+
         model.addAttribute("events", events);
         /* 88 */
         model.addAttribute("rooms", rooms);

@@ -78,7 +78,7 @@
 </head>
 <body>
 <img src="/images/bg2.png" style="width: 100%;height: auto;    position: absolute; " >
-<div id='calendar-container' style="    margin: 200px; margin-top: 4%;">
+<div id='calendar-container' style="    margin: 200px; margin-top: 8%;">
 
     <div class="dropdown show" style="margin: 15px;">
         <a class="btn btn-secondary" href="http://202.194.15.92:8687/" role="button">
@@ -88,6 +88,7 @@
            aria-haspopup="true" aria-expanded="false">
             选择会议室查看
         </a>
+
         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
             <a class="dropdown-item" href="/view">全部</a>
             <a class="dropdown-item" th:each="room :${rooms}" th:text="${room.getString('name')}"
@@ -95,6 +96,11 @@
         </div>
 
         <a class="btn btn-primary" href="#" th:text="'当前选中: '+${nowRoomName}" th:if="${nowRoomName!=null}"></a>
+
+        <a class="btn  btn-danger" style="
+        width: 200px;right: 0;position: absolute;" href="http://202.194.15.92/academic/?redirect=http://202.194.15.92:8688/login" role="button">
+            预约会议室
+        </a>
     </div>
     <div id='calendar'></div>
 </div>
@@ -109,6 +115,5 @@
 <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-
 </body>
 </html>

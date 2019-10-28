@@ -16,6 +16,13 @@
             integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
             crossorigin="anonymous"></script>
 
+
+    <style>
+        .index-my-a{
+            margin: 50px;
+            width: 300px;
+        }
+    </style>
 </head>
 <body >
 <img src="/images/bg_view.png" style="width: 100%;height: auto;  position: absolute;z-index: -1 ;top: 0;">
@@ -28,38 +35,18 @@
 
     <div style="text-align: center;align-content: center;align-items: center;    margin-top: 20%;">
         <div style="max-width: 60%; margin-left: 20%;position: relative;display: flex;">
-            <h5 style="background: #9c0c13;padding: 1rem;color: #fff; margin-bottom: 0;">327会议室</h5>
-            <div style="    margin-left: 58%;">
-                <a href="/view" class="btn btn-primary"
-                   style="border-radius: 25px;background: #9c0c13;color: #fff;margin-bottom: -20px;    padding: .3rem 1.5rem;">按日历查看</a>
-                <a href="http://202.194.15.92/academic?redirect=http://202.194.15.92:8688/login" class="btn btn-primary"
-                   style="border-radius: 25px;background: #9c0c13;color: #fff;margin-bottom: -20px;    padding: .3rem 1.5rem;">预约会议室</a>
-            </div>
+            <a th:href="@{/viewByRoom/} + '1'" class="index-my-a">
+                <h5 style="background: #9c0c13;padding: 1rem;color: #fff; margin-bottom: 0;">327会议室</h5>
+            </a>
+            <a th:href="@{/viewByRoom/} + '2'" class="index-my-a">
+                <h5 style="background: #9c0c13;padding: 1rem;color: #fff; margin-bottom: 0;">323会议室</h5>
+            </a>
+            <a th:href="@{/viewByRoom/} + '3'" class="index-my-a">
+                <h5 style="background: #9c0c13;padding: 1rem;color: #fff; margin-bottom: 0;">阳光大厅</h5>
+            </a>
         </div>
     </div>
 
-    <div>
-        <div class="card mb-3" style="max-width: 60%; margin-left: 20%;">
-
-            <table class="table table-striped">
-                <thead>
-                <tr class="thead-light">
-                    <th scope="col" style="background: #9c0c13;color: #fff">预约时间</th>
-                    <th scope="col" style="background: #9c0c13;color: #fff">日程主题</th>
-                    <th scope="col" style="background: #9c0c13;color: #fff">预约人</th>
-                </tr>
-                </thead>
-
-                <tbody>
-                <tr th:each="event : ${events}">
-                    <th scope="row" th:text="${event.get('time')}">1</th>
-                    <td th:text="${event.get('title')}">耿继勋</td>
-                    <td th:text="${event.get('user')}">耿继勋</td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
     <footer style="text-align: center;align-items: center;align-content: center;margin-top: 80px;z-index: 1">
         <div style="text-align: center;align-items: center;align-content: center">
             <b><p style="text-align: center;align-items: center;align-content: center">版权所有：山东大学医药卫生管理学院 联系电话：0531-88382693</p></b>

@@ -37,6 +37,8 @@ public class MainService {
 
         /*  38 */
         JSONArray jsonArrayEvents = new JSONArray();
+        JSONArray jsonArrayEvents2 = new JSONArray();
+        JSONArray jsonArrayEvents3 = new JSONArray();
         /*  39 */
         for (int i = events.size() - 1; i >= 0; i--) {
             /*  40 */
@@ -75,27 +77,43 @@ public class MainService {
             /*  48 */
 
             String enentDay = time.substring(0, time.length() - " (14:00 - 16:30)".length());
-            if (e.getRoomId() == 1 && nowDays.compareTo(enentDay) <  1) {
+            if ( nowDays.compareTo(enentDay) <  1) {
                 /*  49 */
-                jsonArrayEvents.add(jsonObject);
+                if (e.getRoomId() == 1){
+                    jsonArrayEvents.add(jsonObject);
+                }else if (e.getRoomId()==2){
+                    jsonArrayEvents2.add(jsonObject);
+
+                }else if (e.getRoomId()==3){
+                    jsonArrayEvents3.add(jsonObject);
+                }
+
             }
         }
-        for (int i = 0; i < jsonArrayEvents.size(); i++) {
+        sotByTime(jsonArrayEvents);
+        sotByTime(jsonArrayEvents2);
+        sotByTime(jsonArrayEvents3);
 
-            for (int j = i + 1; j < jsonArrayEvents.size(); j++) {
-                JSONObject bf = (JSONObject) jsonArrayEvents.get(i);
-                JSONObject af = (JSONObject) jsonArrayEvents.get(j);
-                System.out.println("time_bf:" + bf.getString("time"));
+        /*  55 */
+        param.put("events", jsonArrayEvents);
+        param.put("events2", jsonArrayEvents2);
+        param.put("events3", jsonArrayEvents3);
+        /*  57 */
+        return param;
+    }
+
+    private void sotByTime(JSONArray jsonArrayEvents3) {
+        for (int i = 0; i < jsonArrayEvents3.size(); i++) {
+
+            for (int j = i + 1; j < jsonArrayEvents3.size(); j++) {
+                JSONObject bf = (JSONObject) jsonArrayEvents3.get(i);
+                JSONObject af = (JSONObject) jsonArrayEvents3.get(j);
                 if (bf.getString("time").compareTo(af.getString("time")) < 0) {
-                    jsonArrayEvents.set(j, bf);
-                    jsonArrayEvents.set(i, af);
+                    jsonArrayEvents3.set(j, bf);
+                    jsonArrayEvents3.set(i, af);
                 }
             }
         }
-        /*  55 */
-        param.put("events", jsonArrayEvents);
-        /*  57 */
-        return param;
     }
 
 
